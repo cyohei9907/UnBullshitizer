@@ -19,7 +19,7 @@ steps:
       - 'managed'
       - '--allow-unauthenticated'
       - '--set-secrets'
-      - 'OPENAI_API_KEY=AI_API_KEY_GOOGLE:latest'
+      - 'OPENAI_API_KEY=OPENAI_API_KEY:latest'
 
 images:
   - 'gcr.io/$PROJECT_ID/humantic-translate'

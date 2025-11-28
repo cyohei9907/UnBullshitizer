@@ -19,7 +19,7 @@ steps:
       - 'managed'
       - '--allow-unauthenticated'
       - '--set-secrets'
-      - 'GEMINI_API_KEY=AI_API_KEY_GOOGLE:latest'
+      - 'OPENAI_API_KEY=AI_API_KEY_GOOGLE:latest'
 
 images:
   - 'gcr.io/$PROJECT_ID/humantic-translate'

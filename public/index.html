@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>不说人话</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: #fff;
+      color: #333;
+      min-height: 100vh;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 480px;
+      margin: 0 auto;
+    }
+
+    h1 {
+      font-size: 20px;
+      font-weight: 600;
+      text-align: center;
+      margin-bottom: 24px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid #333;
+      cursor: pointer;
+      user-select: none;
+      transition: all 0.3s ease;
+    }
+
+    h1:hover {
+      transform: scale(1.05);
+    }
+
+    @keyframes fadeInOut {
+      0% { opacity: 0; transform: translateX(-50%) translateY(-10px); }
+      20% { opacity: 1; transform: translateX(-50%) translateY(0); }
+      80% { opacity: 1; transform: translateX(-50%) translateY(0); }
+      100% { opacity: 0; transform: translateX(-50%) translateY(-10px); }
+    }
+
+    .section {
+      margin-bottom: 20px;
+    }
+
+    .label {
+      font-size: 12px;
+      color: #666;
+      margin-bottom: 8px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .style-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 8px;
+    }
+
+    .style-btn {
+      padding: 14px 12px;
+      border: 1px solid #333;
+      background: #fff;
+      cursor: pointer;
+      font-size: 14px;
+      transition: all 0.15s;
+      text-align: left;
+    }
+
+    .style-btn:hover {
+      background: #f5f5f5;
+    }
+
+    .style-btn.active {
+      background: #333;
+      color: #fff;
+    }
+
+    textarea {
+      width: 100%;
+      height: 120px;
+      border: 1px solid #333;
+      padding: 12px;
+      font-size: 14px;
+      resize: none;
+      font-family: inherit;
+    }
+
+    textarea:focus {
+      outline: none;
+      border-color: #000;
+    }
+
+    .output-wrapper {
+      position: relative;
+    }
+
+    .output-box {
+      width: 100%;
+      min-height: 120px;
+      border: 1px dashed #999;
+      padding: 12px;
+      font-size: 14px;
+      background: #fafafa;
+      line-height: 1.6;
+    }
+
+    .output-box.empty {
+      color: #999;
+    }
+
+    .copy-btn {
+      position: absolute;
+      bottom: 8px;
+      right: 8px;
+      padding: 6px 12px;
+      border: 1px solid #333;
+      background: #fff;
+      color: #333;
+      font-size: 12px;
+      cursor: pointer;
+      transition: all 0.15s;
+      display: none;
+    }
+
+    .copy-btn.show {
+      display: block;
+    }
+
+    .copy-btn:hover {
+      background: #333;
+      color: #fff;
+    }
+
+    .copy-btn.copied {
+      background: #2563eb;
+      border-color: #2563eb;
+      color: #fff;
+    }
+
+    .submit-btn {
+      width: 100%;
+      padding: 14px;
+      border: 1px solid #333;
+      background: #333;
+      color: #fff;
+      font-size: 14px;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+
+    .submit-btn:hover {
+      background: #000;
+    }
+
+    .submit-btn:disabled {
+      background: #ccc;
+      border-color: #ccc;
+      cursor: not-allowed;
+    }
+
+    .submit-btn.loading {
+      background: #666;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1 id="title">不说人话</h1>
+
+    <div class="section">
+      <div class="label">选择风格</div>
+      <div class="style-grid">
+        <button class="style-btn" data-style="political">政治开会风格</button>
+        <button class="style-btn" data-style="internet">互联网风格</button>
+        <button class="style-btn" data-style="business">商务黑话</button>
+        <button class="style-btn" data-style="koizumi">小泉构文</button>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="label">输入文字</div>
+      <textarea id="input" placeholder="在此输入要转换的文字..."></textarea>
+    </div>
+
+    <div class="section">
+      <div class="label">转换结果</div>
+      <div class="output-wrapper">
+        <div class="output-box empty" id="output">转换后的文字将显示在这里</div>
+        <button class="copy-btn" id="copyBtn">复制</button>
+      </div>
+    </div>
+
+    <button class="submit-btn" id="submit">确认转换</button>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
